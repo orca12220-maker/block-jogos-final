@@ -1,0 +1,16 @@
+<h1>Dashboard 🚀</h1>
+
+<button onclick="ver()">Ver API</button>
+
+<script>
+async function ver(){
+  const res = await fetch("/dashboard", {
+    headers:{
+      Authorization:"Bearer "+localStorage.getItem("token")
+    }
+  });
+
+  const txt = await res.text();
+  alert(txt);
+}
+</script>

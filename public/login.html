@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Login</h2>
+
+<input id="u" placeholder="usuário">
+<input id="p" type="password" placeholder="senha">
+
+<button onclick="login()">Entrar</button>
+
+<script>
+async function login(){
+  const res = await fetch("/login", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      username:u.value,
+      password:p.value
+    })
+  });
+
+  const data = await res.json();
+  localStorage.setItem("token", data.token);
+
+  alert("logado!");
+}
+</script>
+
+</body>
+</html>
